@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hyperd-mpp
+  labels:
+    app: hyperd-mpp
+    role: worker
+spec:
+  ports:
+  - port: 7483
+    protocol: TCP
+  selector:
+    app: hyperd-mpp
+    role: worker

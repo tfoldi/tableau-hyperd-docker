@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-master
+  labels:
+    app: hyperd-mpp
+    role: master
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hyperd-mpp
+      role: master
+  template:
+    metadata:
+      labels:
+        app: hyperd-mpp
+        role: master
+    spec:
+      containers:
+      - name: hyperd-master
+        image: postgres
+        env:
+        - name: POSTGRES_PASSWORD
+          value: pgpass
+        ports:
+        - containerPort: 5432
+
